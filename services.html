@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opulence Media - Premium Digital Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-orange: #FF7A00;
+            --primary-orange-light: #ffa64d;
+            --primary-orange-dark: #cc6200;
+            --text-black: #000000;
+            --text-gray: #666666;
+            --bg-white: #ffffff;
+            --bg-light: #f5f5f5;
+            --bg-dark: #121212;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-white);
+            color: var(--text-black);
+            scroll-behavior: smooth;
+        }
+        
+        .section-padding {
+            padding: 5rem 1rem;
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-orange);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: var(--primary-orange);
+            color: white;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-orange-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 122, 0, 0.4);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-orange-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 122, 0, 0.2);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+            background: var(--primary-orange);
+            box-shadow: 0 8px 25px rgba(255, 122, 0, 0.4);
+        }
+        
+        .service-card:hover .service-icon i {
+            color: white;
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(255, 122, 0, 0.5);
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(255, 122, 0, 0.7);
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 122, 0, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 122, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 122, 0, 0);
+            }
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23121212"/><path d="M0 0L100 100M100 0L0 100" stroke="%23FF7A00" stroke-width="1"/></svg>');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 122, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 70%, rgba(255, 122, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+            line-height: 1;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .testimonial-card {
+            background: var(--bg-white);
+            border-left: 4px solid var(--primary-orange);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .footer-link {
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary-orange);
+            transform: translateX(5px);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, #ff5500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .header-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .footer-bg {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+        
+        .counter-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .counter-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-orange-light) 0%, rgba(255, 122, 0, 0.1) 100%);
+            z-index: -1;
+        }
+        
+        .feature-box {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            bottom: -10px;
+            left: 20%;
+            background: var(--primary-orange);
+            border-radius: 2px;
+        }
+        
+        .price-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .price-card.featured::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--primary-orange);
+            color: white;
+            padding: 5px 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-tag {
+            display: inline-block;
+            background: var(--primary-orange-light);
+            color: var(--primary-orange);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 500;
+            margin: 0.25rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .service-tag:hover {
+            background: var(--primary-orange);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);
+        }
+        
+        .tab-button {
+            background: white;
+            border: 2px solid var(--primary-orange-light);
+            color: var(--text-black);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tab-button.active {
+            background: var(--primary-orange);
+            color: white;
+            border-color: var(--primary-orange);
+            box-shadow: 0 5px 15px rgba(255, 122, 0, 0.3);
+        }
+        
+        .tab-button:hover:not(.active) {
+            background: var(--primary-orange-light);
+            box-shadow: 0 5px 15px rgba(255, 122, 0, 0.2);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .service-image {
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, var(--primary-orange-light) 0%, #ffa64d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-orange);
+            font-weight: 600;
+        }
+        
+        .glow-shadow {
+            box-shadow: 0 0 20px rgba(255, 122, 0, 0.2);
+        }
+        
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating-card {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-image {
+            height: 45px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-logo {
+            height: 55px;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .hero-subheading {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .service-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .testimonial-name {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .cta-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-animation > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .stagger-animation.visible > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-animation.visible > *:nth-child(1) { transition-delay: 0.1s; }
+        .stagger-animation.visible > *:nth-child(2) { transition-delay: 0.2s; }
+        .stagger-animation.visible > *:nth-child(3) { transition-delay: 0.3s; }
+        .stagger-animation.visible > *:nth-child(4) { transition-delay: 0.4s; }
+        .stagger-animation.visible > *:nth-child(5) { transition-delay: 0.5s; }
+        .stagger-animation.visible > *:nth-child(6) { transition-delay: 0.6s; }
+        
+        .hero-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(255, 122, 0, 0.1) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white header-shadow transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="navbar-brand">
+                <!-- Replace with your actual logo -->
+                <img src="logo.png" alt="Opulence Media Logo" class="logo-image">
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-black focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8 text-lg">
+                <a href="index.html" class="nav-link text-black font-medium">Home</a>
+                <a href="services.html" class="nav-link text-orange-500 font-medium">Services</a>
+                <a href="portfolio.html" class="nav-link text-black font-medium">Portfolio</a>
+                <a href="team.html" class="nav-link text-black font-medium">Team</a>
+                <a href="contact.html" class="nav-link text-black font-medium">Contact</a>
+            </nav>
+            
+            <!-- CTA Button -->
+            <a href="contact.html" class="hidden md:inline-block px-6 py-3 btn-primary rounded-full font-semibold shadow-md">
+                Get Quote <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white py-4 px-4 hidden shadow-lg floating-card">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="text-black font-medium py-2 border-b border-gray-200">Home</a>
+                <a href="services.html" class="text-orange-500 font-medium py-2 border-b border-gray-200">Services</a>
+                <a href="portfolio.html" class="text-black font-medium py-2 border-b border-gray-200">Portfolio</a>
+                <a href="team.html" class="text-black font-medium py-2 border-b border-gray-200">Team</a>
+                <a href="contact.html" class="text-black font-medium py-2 border-b border-gray-200">Contact</a>
+                <a href="contact.html" class="btn-primary text-center py-3 rounded-full font-semibold mt-2 shadow-md">
+                    Get Quote <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center pt-20 text-white relative">
+        <div class="hero-glow"></div>
+        <div class="max-w-6xl mx-auto px-4 py-16 text-center fade-in relative z-10">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight text-shadow hero-heading">
+                Our <span class="gradient-text">Services</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 text-gray-300 max-w-3xl mx-auto hero-subheading">
+                Discover our comprehensive range of premium digital and print solutions tailored to elevate your brand
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4 mb-16">
+                <a href="#services" class="px-8 py-4 btn-primary rounded-full font-semibold text-lg shadow-lg">
+                    Explore Services <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+                <a href="contact.html" class="px-8 py-4 bg-transparent border-2 border-orange-500 text-orange-500 rounded-full font-semibold text-lg hover:bg-orange-500 hover:text-white transition-all shadow-md">
+                    Get Custom Quote
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Navigation -->
+    <section class="py-8 bg-gray-50 sticky top-20 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4" id="service-tabs">
+                <button class="tab-button active" data-tab="digital-media">Digital Media Production</button>
+                <button class="tab-button" data-tab="motion-graphics">Motion Graphics</button>
+                <button class="tab-button" data-tab="photography">Photography</button>
+                <button class="tab-button" data-tab="branding">Branding</button>
+                <button class="tab-button" data-tab="graphic-design">Graphic Design</button>
+                <button class="tab-button" data-tab="web-design">Website Design</button>
+                <button class="tab-button" data-tab="print-services">Print Services</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Content -->
+    <section id="services" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Digital Media Production -->
+            <div class="tab-content active" id="digital-media">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Digital Media <span class="text-orange-500">Production</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Professional video production and digital content creation for all platforms
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/corporate-video.jpg" alt="Corporate Video Production" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-video text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Corporate Video</h3>
+                        <p class="text-4xl font-bold text-orange-500 mb-6">N$12,499</p>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li>Professional scriptwriting</li>
+                            <li>2-day professional filming</li>
+                            <li>Professional editing & color grading</li>
+                            <li>Motion graphics integration</li>
+                            <li>Multiple format delivery</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Get Started
+                        </a>
+                    </div>
+                    
+                    <div class="price-card text-center card-hover featured">
+                        <div class="service-image">
+                            <img src="images/social-media-content.jpg" alt="Social Media Content" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-share-alt text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Social Media Package</h3>
+                        <p class="text-4xl font-bold text-orange-500 mb-6">N$6,999</p>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li>12 social media videos</li>
+                            <li>Platform-optimized formats</li>
+                            <li>Custom captions & hashtags</li>
+                            <li>Monthly content calendar</li>
+                            <li>Performance analytics</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Get Started
+                        </a>
+                    </div>
+                    
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/event-coverage.jpg" alt="Event Coverage" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-calendar-alt text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Event Coverage</h3>
+                        <p class="text-4xl font-bold text-orange-500 mb-6">N$8,499</p>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li>Full event coverage</li>
+                            <li>Multi-camera setup</li>
+                            <li>Live streaming option</li>
+                            <li>Highlight reel creation</li>
+                            <li>Same-day teaser delivery</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="mt-16">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Additional Digital Media Services</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="feature-box card-hover">
+                            <div class="service-image">
+                                <img src="images/documentary.jpg" alt="Documentary Production" class="w-full h-full object-cover rounded-lg">
+                            </div>
+                            <div class="service-icon">
+                                <i class="fas fa-film text-2xl text-orange-500"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-black mb-2">Documentary Production</h3>
+                            <p class="text-gray-600">Comprehensive documentary production services from concept development to final delivery.</p>
+                        </div>
+                        
+                        <div class="feature-box card-hover">
+                            <div class="service-image">
+                                <img src="images/live-streaming.jpg" alt="Live Streaming" class="w-full h-full object-cover rounded-lg">
+                            </div>
+                            <div class="service-icon">
+                                <i class="fas fa-broadcast-tower text-2xl text-orange-500"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-black mb-2">Live Streaming</h3>
+                            <p class="text-gray-600">Professional live streaming setup for events, conferences, and product launches.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Motion Graphics -->
+            <div class="tab-content" id="motion-graphics">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Motion <span class="text-orange-500">Graphics</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Dynamic animations and visual effects that captivate and engage your audience
+                    </p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <span class="service-tag">Explainer Videos</span>
+                    <span class="service-tag">Animated Logos</span>
+                    <span class="service-tag">Title Sequences</span>
+                    <span class="service-tag">Infographic Animations</span>
+                    <span class="service-tag">Character Animation</span>
+                    <span class="service-tag">UI/UX Animations</span>
+                    <span class="service-tag">3D Modeling</span>
+                    <span class="service-tag">Visual Effects</span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                    <div class="feature-box card-hover">
+                        <div class="service-image">
+                            <img src="images/explainer-videos.jpg" alt="Explainer Videos" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-play-circle text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-4 text-center">Explainer Videos</h3>
+                        <p class="text-gray-600 mb-6 text-center">
+                            Transform complex ideas into engaging animated videos that educate and convert your audience.
+                        </p>
+                        <div class="text-center">
+                            <a href="contact.html" class="text-orange-500 font-semibold hover:underline flex items-center justify-center">
+                                Get Pricing <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-box card-hover">
+                        <div class="service-image">
+                            <img src="images/brand-animation.jpg" alt="Brand Animation" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-film text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-4 text-center">Brand Animation</h3>
+                        <p class="text-gray-600 mb-6 text-center">
+                            Bring your brand to life with custom animated logos, transitions, and visual identity elements.
+                        </p>
+                        <div class="text-center">
+                            <a href="contact.html" class="text-orange-500 font-semibold hover:underline flex items-center justify-center">
+                                Get Pricing <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/logo-animation.jpg" alt="Logo Animation" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">Logo Animation</h3>
+                        <p class="text-3xl font-bold text-orange-500 mb-4">From N$2,499</p>
+                        <p class="text-gray-600 text-sm">Bring your logo to life with custom animation</p>
+                    </div>
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/infographic-animation.jpg" alt="Infographic Animation" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">Infographic Animation</h3>
+                        <p class="text-3xl font-bold text-orange-500 mb-4">From N$3,999</p>
+                        <p class="text-gray-600 text-sm">Animate data and information for better engagement</p>
+                    </div>
+                    <div class="price-card text-center card-hover featured">
+                        <div class="service-image">
+                            <img src="images/character-animation.jpg" alt="Character Animation" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">Character Animation</h3>
+                        <p class="text-3xl font-bold text-orange-500 mb-4">From N$5,999</p>
+                        <p class="text-gray-600 text-sm">Custom character design and animation</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Photography -->
+            <div class="tab-content" id="photography">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Professional <span class="text-orange-500">Photography</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        High-quality photography services for products, events, and corporate needs
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-8">
+                    <div class="service-tag text-center">Product Photography</div>
+                    <div class="service-tag text-center">Corporate Events</div>
+                    <div class="service-tag text-center">Portrait Sessions</div>
+                    <div class="service-tag text-center">Architecture</div>
+                    <div class="service-tag text-center">Food Photography</div>
+                    <div class="service-tag text-center">Fashion</div>
+                    <div class="service-tag text-center">Real Estate</div>
+                    <div class="service-tag text-center">Aerial Photography</div>
+                    <div class="service-tag text-center">Studio Sessions</div>
+                    <div class="service-tag text-center">Editorial</div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                    <div class="feature-box text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/product-photography.jpg" alt="Product Photography" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-box text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">Product Photography</h3>
+                        <p class="text-gray-600">Professional product shots that showcase your items in the best light for e-commerce and marketing.</p>
+                    </div>
+                    
+                    <div class="feature-box text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/corporate-events.jpg" alt="Corporate Events" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-users text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">Corporate Events</h3>
+                        <p class="text-gray-600">Comprehensive event coverage that captures the essence and energy of your corporate gatherings.</p>
+                    </div>
+                    
+                    <div class="feature-box text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/portrait-sessions.jpg" alt="Portrait Sessions" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-user text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">Portrait Sessions</h3>
+                        <p class="text-gray-600">Professional portrait photography for executives, teams, and personal branding needs.</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/real-estate-photography.jpg" alt="Real Estate Photography" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Real Estate Photography</h3>
+                        <p class="text-4xl font-bold text-orange-500 mb-6">From N$1,999</p>
+                        <ul class="list-none text-gray-600 text-center mb-6 space-y-2">
+                            <li>Interior & Exterior Shots</li>
+                            <li>Professional Lighting Setup</li>
+                            <li>Virtual Tour Creation</li>
+                            <li>Drone Photography Available</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Book Session
+                        </a>
+                    </div>
+                    
+                    <div class="price-card text-center card-hover featured">
+                        <div class="service-image">
+                            <img src="images/food-photography.jpg" alt="Food Photography" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Food Photography</h3>
+                        <p class="text-4xl font-bold text-orange-500 mb-6">From N$2,499</p>
+                        <ul class="list-none text-gray-600 text-center mb-6 space-y-2">
+                            <li>Restaurant Menu Shots</li>
+                            <li>Recipe Development Photography</li>
+                            <li>Food Styling Included</li>
+                            <li>Social Media Optimized</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Book Session
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Branding -->
+            <div class="tab-content" id="branding">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Brand <span class="text-orange-500">Identity</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Complete brand identity development including logos, guidelines, and visual systems
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/startup-branding.jpg" alt="Startup Branding" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">Startup Package</h3>
+                        <p class="text-3xl font-bold text-orange-500 mb-4">N$4,995</p>
+                        <p class="text-gray-600 text-sm">Logo Design</p>
+                        <p class="text-gray-600 text-sm mt-2">Color Palette</p>
+                        <p class="text-gray-600 text-sm mt-2">Typography System</p>
+                        <p class="text-gray-600 text-sm mt-2">Basic Brand Guide</p>
+                    </div>
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/professional-branding.jpg" alt="Professional Branding" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">Professional Package</h3>
+                        <p class="text-3xl font-bold text-orange-500 mb-4">N$8,499</p>
+                        <p class="text-gray-600 text-sm">Comprehensive Logo System</p>
+                        <p class="text-gray-600 text-sm mt-2">Complete Brand Guidelines</p>
+                        <p class="text-gray-600 text-sm mt-2">Stationery Design</p>
+                        <p class="text-gray-600 text-sm mt-2">Social Media Kit</p>
+                    </div>
+                    <div class="price-card text-center card-hover featured">
+                        <div class="service-image">
+                            <img src="images/enterprise-branding.jpg" alt="Enterprise Branding" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">Enterprise Package</h3>
+                        <p class="text-3xl font-bold text-orange-500 mb-4">N$12,999</p>
+                        <p class="text-gray-600 text-sm">Full Brand System</p>
+                        <p class="text-gray-600 text-sm mt-2">Brand Application Examples</p>
+                        <p class="text-gray-600 text-sm mt-2">Marketing Collateral</p>
+                        <p class="text-gray-600 text-sm mt-2">Brand Voice & Messaging</p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-gray-600 mb-6">All branding packages include multiple concepts, revisions, and final file delivery in all required formats.</p>
+                    <a href="contact.html" class="btn-primary px-8 py-4 rounded-full font-semibold text-lg shadow-lg inline-block">
+                        Start Your Brand <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Graphic Design -->
+            <div class="tab-content" id="graphic-design">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Graphic <span class="text-orange-500">Design</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Creative design solutions for print and digital media, marketing materials, and more
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/print-design.jpg" alt="Print Design" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Print Design</h3>
+                        <p class="text-4xl font-bold text-orange-500 mb-6">From N$1,099</p>
+                        <ul class="list-none text-gray-600 text-center mb-6 space-y-2">
+                            <li>Brochures & Flyers</li>
+                            <li>Business Cards</li>
+                            <li>Posters & Banners</li>
+                            <li>Packaging Design</li>
+                            <li>Annual Reports</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Get Quote
+                        </a>
+                    </div>
+                    
+                    <div class="price-card text-center card-hover featured">
+                        <div class="service-image">
+                            <img src="images/digital-design.jpg" alt="Digital Design" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Digital Design</h3>
+                        <p class="text-4xl font-bold text-orange-500 mb-6">From N$1,499</p>
+                        <ul class="list-none text-gray-600 text-center mb-6 space-y-2">
+                            <li>Social Media Graphics</li>
+                            <li>Email Templates</li>
+                            <li>Digital Ads</li>
+                            <li>Presentation Design</li>
+                            <li>Infographics</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Get Quote
+                        </a>
+                    </div>
+                    
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/marketing-materials.jpg" alt="Marketing Materials" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Marketing Materials</h3>
+                        <p class="text-4xl font-bold text-orange-500 mb-6">From N$2,299</p>
+                        <ul class="list-none text-gray-600 text-center mb-6 space-y-2">
+                            <li>Brand Campaigns</li>
+                            <li>Product Launches</li>
+                            <li>Event Materials</li>
+                            <li>Trade Show Graphics</li>
+                            <li>Complete Marketing Kits</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-gray-600 mb-6">All design projects include concept development, revisions, and final file delivery.</p>
+                    <a href="contact.html" class="px-8 py-4 bg-transparent border-2 border-orange-500 text-orange-500 rounded-full font-semibold text-lg hover:bg-orange-500 hover:text-white transition-all shadow-md inline-block">
+                        Discuss Your Project <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Website Design -->
+            <div class="tab-content" id="web-design">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Website <span class="text-orange-500">Design</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Custom website design and development tailored to your business needs and goals
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/business-website.jpg" alt="Business Website" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Business Website</h3>
+                        <ul class="list-none text-gray-600 text-center mb-6 space-y-2">
+                            <li>5-7 Page Custom Design</li>
+                            <li>Mobile Responsive</li>
+                            <li>Contact Forms</li>
+                            <li>Basic SEO Setup</li>
+                            <li>Content Management System</li>
+                            <li>1 Year Hosting & Support</li>
+                        </ul>
+                        <p class="text-3xl font-bold text-orange-500 mb-6">From N$14,999</p>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Get Started
+                        </a>
+                    </div>
+                    
+                    <div class="price-card text-center card-hover featured">
+                        <div class="service-image">
+                            <img src="images/ecommerce-website.jpg" alt="E-commerce Website" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-shopping-cart text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">E-commerce Website</h3>
+                        <ul class="list-none text-gray-600 text-center mb-6 space-y-2">
+                            <li>Custom Online Store</li>
+                            <li>Product Management</li>
+                            <li>Secure Payment Gateway</li>
+                            <li>Inventory Management</li>
+                            <li>Order Processing System</li>
+                            <li>Marketing Integration</li>
+                        </ul>
+                        <p class="text-3xl font-bold text-orange-500 mb-6">From N$24,999</p>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                    <div class="feature-box text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/ui-ux-design.jpg" alt="UI/UX Design" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-mouse-pointer text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">UI/UX Design</h3>
+                        <p class="text-gray-600">User-centered design that creates intuitive, engaging experiences for your website visitors.</p>
+                    </div>
+                    
+                    <div class="feature-box text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/web-development.jpg" alt="Web Development" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-code text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">Web Development</h3>
+                        <p class="text-gray-600">Custom coding and development to bring your website design to life with functionality and performance.</p>
+                    </div>
+                    
+                    <div class="feature-box text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/website-maintenance.jpg" alt="Website Maintenance" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-tools text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-black mb-2">Website Maintenance</h3>
+                        <p class="text-gray-600">Ongoing support, updates, and maintenance to keep your website secure and performing optimally.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Print Services -->
+            <div class="tab-content" id="print-services">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Print <span class="text-orange-500">Services</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        High-quality printing services for all your promotional and branding needs
+                    </p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <span class="service-tag">Vinyl Stickers</span>
+                    <span class="service-tag">Banners</span>
+                    <span class="service-tag">Canvases</span>
+                    <span class="service-tag">Signboards</span>
+                    <span class="service-tag">T-Shirts</span>
+                    <span class="service-tag">Business Cards</span>
+                    <span class="service-tag">Brochures</span>
+                    <span class="service-tag">Posters</span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/vinyl-stickers.jpg" alt="Vinyl Stickers" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-sticky-note text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Vinyl Stickers</h3>
+                        <p class="text-4xl font-bold text-orange-500 mb-6">From N$199</p>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li>Custom shapes & sizes</li>
+                            <li>Weather-resistant materials</li>
+                            <li>Indoor & outdoor use</li>
+                            <li>High-quality printing</li>
+                            <li>Quick turnaround</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Get Quote
+                        </a>
+                    </div>
+                    
+                    <div class="price-card text-center card-hover featured">
+                        <div class="service-image">
+                            <img src="images/banners.jpg" alt="Banners" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-flag text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Banners</h3>
+                        <p class="text-4xl font-bold text-orange-500 mb-6">From N$899</p>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li>Various sizes available</li>
+                            <li>High-resolution printing</li>
+                            <li>Durable materials</li>
+                            <li>Grommets included</li>
+                            <li>Indoor & outdoor options</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Get Quote
+                        </a>
+                    </div>
+                    
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/canvases.jpg" alt="Canvases" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-image text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Photo Canvases</h3>
+                        <p class="text-4xl font-bold text-orange-500 mb-6">From N$699</p>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li>Gallery-quality prints</li>
+                            <li>Stretched canvas frames</li>
+                            <li>Various sizes available</li>
+                            <li>UV-resistant inks</li>
+                            <li>Ready to hang</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/signboards.jpg" alt="Signboards" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-sign text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Signboards</h3>
+                        <p class="text-4xl font-bold text-orange-500 mb-6">From N$1,299</p>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li>Custom sizes & shapes</li>
+                            <li>Durable materials</li>
+                            <li>Weather-resistant finishes</li>
+                            <li>Professional installation available</li>
+                            <li>Indoor & outdoor options</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Get Quote
+                        </a>
+                    </div>
+                    
+                    <div class="price-card text-center card-hover">
+                        <div class="service-image">
+                            <img src="images/t-shirts.jpg" alt="T-Shirts" class="w-full h-full object-cover rounded-lg">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-tshirt text-2xl text-orange-500"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-black mb-2">Custom T-Shirts</h3>
+                        <p class="text-4xl font-bold text-orange-500 mb-6">From N$249</p>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li>Various sizes & colors</li>
+                            <li>High-quality printing</li>
+                            <li>Custom designs</li>
+                            <li>Bulk order discounts</li>
+                            <li>Quick turnaround</li>
+                        </ul>
+                        <a href="contact.html" class="btn-primary px-6 py-3 rounded-full font-semibold inline-block">
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <p class="text-gray-600 mb-6">All print services include design consultation, proofing, and high-quality production.</p>
+                    <a href="contact.html" class="btn-primary px-8 py-4 rounded-full font-semibold text-lg shadow-lg inline-block">
+                        Request Print Quote <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-padding bg-gradient-to-r from-orange-500 to-orange-600">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white cta-heading">Ready to Elevate Your Digital Presence?</h2>
+            <p class="text-xl mb-8 text-white opacity-90">
+                Contact us today for a free consultation and quote on your next digital project
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="contact.html" class="px-8 py-4 bg-white text-orange-500 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all shadow-lg">
+                    Get Quote <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="tel:+264855616423" class="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white hover:text-orange-500 transition-all shadow-md">
+                    <i class="fas fa-phone mr-2"></i> Call Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-bg py-12 px-4 text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="lg:col-span-1">
+                    <a href="index.html" class="navbar-brand">
+                        <!-- Replace with your actual logo -->
+                        <img src="logo.png" alt="Opulence Media Logo" class="footer-logo">
+                    </a>
+                    <p class="text-gray-300 mb-6">
+                        Premium digital solutions with creativity, innovation, and exceptional client service.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-orange-500 hover:bg-gray-700 transition-colors shadow-md">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-orange-500 hover:bg-gray-700 transition-colors shadow-md">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-orange-500 hover:bg-gray-700 transition-colors shadow-md">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-orange-500 hover:bg-gray-700 transition-colors shadow-md">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link text-gray-300">Home</a></li>
+                        <li><a href="services.html" class="footer-link text-gray-300">Services</a></li>
+                        <li><a href="portfolio.html" class="footer-link text-gray-300">Portfolio</a></li>
+                        <li><a href="team.html" class="footer-link text-gray-300">Our Team</a></li>
+                        <li><a href="contact.html" class="footer-link text-gray-300">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Our Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="services.html#digital-media" class="footer-link text-gray-300">Digital Media Production</a></li>
+                        <li><a href="services.html#motion-graphics" class="footer-link text-gray-300">Motion Graphics</a></li>
+                        <li><a href="services.html#photography" class="footer-link text-gray-300">Photography</a></li>
+                        <li><a href="services.html#branding" class="footer-link text-gray-300">Branding</a></li>
+                        <li><a href="services.html#web-design" class="footer-link text-gray-300">Website Design</a></li>
+                        <li><a href="services.html#print-services" class="footer-link text-gray-300">Print Services</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Contact Info</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-orange-500 mt-1 mr-3"></i>
+                            <div>
+                                <p class="text-gray-300 font-semibold">Our Location</p>
+                                <p class="text-gray-400">788 Samuel Maharero St, Academia, Windhoek</p>
+                                <p class="text-gray-400">PO Box 29061 Game, Windhoek</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-orange-500 mr-3"></i>
+                            <p class="text-gray-300">+264 85 561 6423</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-orange-500 mr-3"></i>
+                            <p class="text-gray-300">+264 81 561 6423</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-orange-500 mr-3"></i>
+                            <p class="text-gray-300">opulencem.na@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; <span id="current-year"></span> Opulence Media. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/264855616423" target="_blank" class="floating-whatsapp">
+        <i class="fab fa-whatsapp text-white text-2xl"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+                header.classList.add('bg-white/95');
+                header.classList.add('backdrop-blur-sm');
+            } else {
+                header.classList.remove('shadow-lg');
+                header.classList.remove('bg-white/95');
+                header.classList.remove('backdrop-blur-sm');
+            }
+        });
+
+        // Scroll animation for elements
+        const fadeElements = document.querySelectorAll('.fade-in, .stagger-animation');
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            fadeObserver.observe(element);
+        });
+
+        // Add loading animation to elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate elements on load
+            const animatedElements = document.querySelectorAll('.feature-box, .price-card');
+            animatedElements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

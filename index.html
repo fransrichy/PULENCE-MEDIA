@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opulence Media - Premium Digital Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-orange: #FF7A00;
+            --primary-orange-light: #ffa64d;
+            --primary-orange-dark: #cc6200;
+            --text-black: #000000;
+            --text-gray: #666666;
+            --bg-white: #ffffff;
+            --bg-light: #f5f5f5;
+            --bg-dark: #121212;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-white);
+            color: var(--text-black);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        .section-padding {
+            padding: 5rem 1rem;
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-orange);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: var(--primary-orange);
+            color: white;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-orange-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 122, 0, 0.4);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-orange-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 122, 0, 0.2);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+            background: var(--primary-orange);
+            box-shadow: 0 8px 25px rgba(255, 122, 0, 0.4);
+        }
+        
+        .service-card:hover .service-icon i {
+            color: white;
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(255, 122, 0, 0.5);
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(255, 122, 0, 0.7);
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 122, 0, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 122, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 122, 0, 0);
+            }
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23121212"/><path d="M0 0L100 100M100 0L0 100" stroke="%23FF7A00" stroke-width="1"/></svg>');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 122, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 70%, rgba(255, 122, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+            line-height: 1;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .testimonial-card {
+            background: var(--bg-white);
+            border-left: 4px solid var(--primary-orange);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .footer-link {
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary-orange);
+            transform: translateX(5px);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, #ff5500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .header-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .footer-bg {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+        
+        .counter-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .counter-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-orange-light) 0%, rgba(255, 122, 0, 0.1) 100%);
+            z-index: -1;
+        }
+        
+        .feature-box {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            bottom: -10px;
+            left: 20%;
+            background: var(--primary-orange);
+            border-radius: 2px;
+        }
+        
+        .logo-image {
+            height: 45px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-logo {
+            height: 55px;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+        
+        .glow-shadow {
+            box-shadow: 0 0 20px rgba(255, 122, 0, 0.2);
+        }
+        
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-image {
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, var(--primary-orange-light) 0%, #ffa64d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-orange);
+            font-weight: 600;
+        }
+        
+        .digital-bg {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+        }
+        
+        .hero-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .hero-subheading {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .service-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .testimonial-name {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .cta-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-animation > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .stagger-animation.visible > * {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-animation.visible > *:nth-child(1) { transition-delay: 0.1s; }
+        .stagger-animation.visible > *:nth-child(2) { transition-delay: 0.2s; }
+        .stagger-animation.visible > *:nth-child(3) { transition-delay: 0.3s; }
+        .stagger-animation.visible > *:nth-child(4) { transition-delay: 0.4s; }
+        .stagger-animation.visible > *:nth-child(5) { transition-delay: 0.5s; }
+        .stagger-animation.visible > *:nth-child(6) { transition-delay: 0.6s; }
+        
+        .hero-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(255, 122, 0, 0.1) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white header-shadow transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="navbar-brand">
+                <!-- Replace with your actual logo -->
+                <img src="/images/logo.png" alt="Opulence Media Logo" class="logo-image">
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-black focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8 text-lg">
+                <a href="index.html" class="nav-link text-orange-500 font-medium">Home</a>
+                <a href="services.html" class="nav-link text-black font-medium">Services</a>
+                <a href="portfolio.html" class="nav-link text-black font-medium">Portfolio</a>
+                <a href="team.html" class="nav-link text-black font-medium">Team</a>
+                <a href="contact.html" class="nav-link text-black font-medium">Contact</a>
+            </nav>
+            
+            <!-- CTA Button -->
+            <a href="contact.html" class="hidden md:inline-block px-6 py-3 btn-primary rounded-full font-semibold shadow-md">
+                Get Quote <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white py-4 px-4 hidden shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="text-orange-500 font-medium py-2 border-b border-gray-200">Home</a>
+                <a href="services.html" class="text-black font-medium py-2 border-b border-gray-200">Services</a>
+                <a href="portfolio.html" class="text-black font-medium py-2 border-b border-gray-200">Portfolio</a>
+                <a href="team.html" class="text-black font-medium py-2 border-b border-gray-200">Team</a>
+                <a href="contact.html" class="text-black font-medium py-2 border-b border-gray-200">Contact</a>
+                <a href="contact.html" class="btn-primary text-center py-3 rounded-full font-semibold mt-2 shadow-md">
+                    Get Quote <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center pt-20 text-white relative">
+        <div class="hero-glow"></div>
+        <div class="max-w-6xl mx-auto px-4 py-16 text-center fade-in relative z-10">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight text-shadow hero-heading">
+                Premium <span class="gradient-text">Digital</span> Solutions
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 text-gray-300 max-w-3xl mx-auto hero-subheading">
+                Transform your brand with cutting-edge digital media, motion graphics, and premium design services
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4 mb-16">
+                <a href="services.html" class="px-8 py-4 btn-primary rounded-full font-semibold text-lg shadow-lg">
+                    Explore Services <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="portfolio.html" class="px-8 py-4 bg-transparent border-2 border-orange-500 text-orange-500 rounded-full font-semibold text-lg hover:bg-orange-500 hover:text-white transition-all shadow-md">
+                    View Portfolio
+                </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 stagger-animation">
+                <div class="feature-box card-hover">
+                    <div class="service-icon">
+                        <i class="fas fa-video text-2xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-black service-heading">Digital Media</h3>
+                    <p class="text-gray-600">High-quality video production and digital content creation</p>
+                </div>
+                <div class="feature-box card-hover">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush text-2xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-black service-heading">Creative Design</h3>
+                    <p class="text-gray-600">Innovative branding and graphic design solutions</p>
+                </div>
+                <div class="feature-box card-hover">
+                    <div class="service-icon">
+                        <i class="fas fa-code text-2xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-black service-heading">Web Development</h3>
+                    <p class="text-gray-600">Custom websites and digital platforms for your business</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview Section -->
+    <section class="section-padding bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Our <span class="text-orange-500">Services</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive digital solutions for businesses, brands, and creative projects
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-animation">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-8 rounded-2xl card-hover border border-gray-100">
+                    <div class="service-image">
+                        <!-- Replace with your actual image -->
+                        <img src="images/digital-media-production.jpg" alt="Digital Media Production" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="service-icon">
+                        <i class="fas fa-film text-2xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-center text-black service-heading">Digital Media Production</h3>
+                    <p class="text-gray-600 mb-6 text-center">
+                        Professional video production, editing, and digital content creation for all platforms
+                    </p>
+                    <div class="text-center">
+                        <a href="services.html#digital-media" class="text-orange-500 font-semibold hover:underline flex items-center justify-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-8 rounded-2xl card-hover border border-gray-100">
+                    <div class="service-image">
+                        <!-- Replace with your actual image -->
+                        <img src="images/motion-graphics.jpg" alt="Motion Graphics & Animation" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="service-icon">
+                        <i class="fas fa-play text-2xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-center text-black service-heading">Motion Graphics & Animation</h3>
+                    <p class="text-gray-600 mb-6 text-center">
+                        Dynamic animations, explainer videos, and motion graphics that captivate audiences
+                    </p>
+                    <div class="text-center">
+                        <a href="services.html#motion-graphics" class="text-orange-500 font-semibold hover:underline flex items-center justify-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-8 rounded-2xl card-hover border border-gray-100">
+                    <div class="service-image">
+                        <!-- Replace with your actual image -->
+                        <img src="images/photography.jpg" alt="Photography" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="service-icon">
+                        <i class="fas fa-camera-retro text-2xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-center text-black service-heading">Photography</h3>
+                    <p class="text-gray-600 mb-6 text-center">
+                        Professional photography services for products, events, and corporate needs
+                    </p>
+                    <div class="text-center">
+                        <a href="services.html#photography" class="text-orange-500 font-semibold hover:underline flex items-center justify-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white p-8 rounded-2xl card-hover border border-gray-100">
+                    <div class="service-image">
+                        <!-- Replace with your actual image -->
+                        <img src="images/branding.jpg" alt="Branding" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="service-icon">
+                        <i class="fas fa-trademark text-2xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-center text-black service-heading">Branding</h3>
+                    <p class="text-gray-600 mb-6 text-center">
+                        Complete brand identity development including logos, guidelines, and visual systems
+                    </p>
+                    <div class="text-center">
+                        <a href="services.html#branding" class="text-orange-500 font-semibold hover:underline flex items-center justify-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-white p-8 rounded-2xl card-hover border border-gray-100">
+                    <div class="service-image">
+                        <!-- Replace with your actual image -->
+                        <img src="images/graphic-design.jpg" alt="Graphic Design" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="service-icon">
+                        <i class="fas fa-object-group text-2xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-center text-black service-heading">Graphic Design</h3>
+                    <p class="text-gray-600 mb-6 text-center">
+                        Creative design solutions for print and digital media, marketing materials, and more
+                    </p>
+                    <div class="text-center">
+                        <a href="services.html#graphic-design" class="text-orange-500 font-semibold hover:underline flex items-center justify-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-white p-8 rounded-2xl card-hover border border-gray-100">
+                    <div class="service-image">
+                        <!-- Replace with your actual image -->
+                        <img src="images/website-design.jpg" alt="Website Design" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="service-icon">
+                        <i class="fas fa-globe text-2xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-center text-black service-heading">Website Design</h3>
+                    <p class="text-gray-600 mb-6 text-center">
+                        Custom website design and development tailored to your business needs and goals
+                    </p>
+                    <div class="text-center">
+                        <a href="services.html#web-design" class="text-orange-500 font-semibold hover:underline flex items-center justify-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 fade-in">
+                <a href="services.html" class="px-8 py-4 btn-primary rounded-full font-semibold text-lg shadow-lg">
+                    View All Services <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section-padding counter-container">
+        <div class="max-w-7xl mx-auto stagger-animation">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6">
+                    <div class="stats-counter" data-count="250">0</div>
+                    <p class="text-gray-700 mt-2 font-medium">Projects Completed</p>
+                </div>
+                <div class="p-6">
+                    <div class="stats-counter" data-count="98">0</div>
+                    <p class="text-gray-700 mt-2 font-medium">Client Satisfaction</p>
+                </div>
+                <div class="p-6">
+                    <div class="stats-counter" data-count="5">0</div>
+                    <p class="text-gray-700 mt-2 font-medium">Years Experience</p>
+                </div>
+                <div class="p-6">
+                    <div class="stats-counter" data-count="15">0</div>
+                    <p class="text-gray-700 mt-2 font-medium">Industry Awards</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Portfolio Section -->
+    <section class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Featured <span class="text-orange-500">Projects</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    A glimpse of our recent work that showcases our creativity and technical expertise
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-animation">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden card-hover border border-gray-100 shadow-md">
+                    <div class="service-image">
+                        <!-- Replace with your actual image -->
+                        <img src="images/corporate-video-project.jpg" alt="Corporate Brand Video" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-black service-heading">Corporate Brand Video</h3>
+                        <p class="text-gray-600 mb-4">Complete video production for a tech startup</p>
+                        <a href="portfolio.html" class="text-orange-500 font-semibold text-sm flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden card-hover border border-gray-100 shadow-md">
+                    <div class="service-image">
+                        <!-- Replace with your actual image -->
+                        <img src="images/brand-identity-project.jpg" alt="Brand Identity Design" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-black service-heading">Brand Identity Design</h3>
+                        <p class="text-gray-600 mb-4">Complete rebrand for a fashion retailer</p>
+                        <a href="portfolio.html" class="text-orange-500 font-semibold text-sm flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden card-hover border border-gray-100 shadow-md">
+                    <div class="service-image">
+                        <!-- Replace with your actual image -->
+                        <img src="images/ecommerce-project.jpg" alt="E-commerce Website" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-black service-heading">E-commerce Website</h3>
+                        <p class="text-gray-600 mb-4">Custom online store with integrated payment system</p>
+                        <a href="portfolio.html" class="text-orange-500 font-semibold text-sm flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 fade-in">
+                <a href="portfolio.html" class="px-8 py-4 btn-primary rounded-full font-semibold text-lg shadow-lg">
+                    View Full Portfolio <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section-padding bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Client <span class="text-orange-500">Testimonials</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    What our clients say about our services and quality
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-animation">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-6 rounded-2xl card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold mr-4 shadow-md">
+                            JD
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-black testimonial-name">John Doe</h4>
+                            <p class="text-gray-500 text-sm">Marketing Director</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Opulence Media transformed our digital presence with their exceptional video production and branding. Professional service from start to finish!"
+                    </p>
+                    <div class="flex text-yellow-400 mt-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-6 rounded-2xl card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold mr-4 shadow-md">
+                            SJ
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-black testimonial-name">Sarah Johnson</h4>
+                            <p class="text-gray-500 text-sm">Business Owner</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Our website redesign was absolutely stunning! The attention to detail and user experience exceeded our expectations."
+                    </p>
+                    <div class="flex text-yellow-400 mt-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-6 rounded-2xl card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold mr-4 shadow-md">
+                            MR
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-black testimonial-name">Michael Roberts</h4>
+                            <p class="text-gray-500 text-sm">Creative Director</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "The team at Opulence Media delivered our animation project ahead of schedule with exceptional quality. Highly recommended!"
+                    </p>
+                    <div class="flex text-yellow-400 mt-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-padding bg-gradient-to-r from-orange-500 to-orange-600">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white cta-heading">Ready to Elevate Your Digital Presence?</h2>
+            <p class="text-xl mb-8 text-white opacity-90">
+                Contact us today for a free consultation and quote on your next digital project
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="contact.html" class="px-8 py-4 bg-white text-orange-500 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all shadow-lg">
+                    Get Started <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+                <a href="tel:+264855616423" class="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white hover:text-orange-500 transition-all shadow-md">
+                    <i class="fas fa-phone mr-2"></i> Call Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-bg py-12 px-4 text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="lg:col-span-1">
+                    <a href="index.html" class="navbar-brand">
+                        <!-- Replace with your actual logo -->
+                        <img src="./images/logo.png" alt="Opulence Media Logo" class="footer-logo">
+                    </a>
+                    <p class="text-gray-300 mb-6">
+                        Premium digital solutions with creativity, innovation, and exceptional client service.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-orange-500 hover:bg-gray-700 transition-colors shadow-md">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-orange-500 hover:bg-gray-700 transition-colors shadow-md">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-orange-500 hover:bg-gray-700 transition-colors shadow-md">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:text-orange-500 hover:bg-gray-700 transition-colors shadow-md">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link text-gray-300">Home</a></li>
+                        <li><a href="services.html" class="footer-link text-gray-300">Services</a></li>
+                        <li><a href="portfolio.html" class="footer-link text-gray-300">Portfolio</a></li>
+                        <li><a href="team.html" class="footer-link text-gray-300">Our Team</a></li>
+                        <li><a href="contact.html" class="footer-link text-gray-300">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Our Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="services.html#digital-media" class="footer-link text-gray-300">Digital Media Production</a></li>
+                        <li><a href="services.html#motion-graphics" class="footer-link text-gray-300">Motion Graphics</a></li>
+                        <li><a href="services.html#photography" class="footer-link text-gray-300">Photography</a></li>
+                        <li><a href="services.html#branding" class="footer-link text-gray-300">Branding</a></li>
+                        <li><a href="services.html#web-design" class="footer-link text-gray-300">Website Design</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Contact Info</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-orange-500 mt-1 mr-3"></i>
+                            <div>
+                                <p class="text-gray-300 font-semibold">Our Location</p>
+                                <p class="text-gray-400">788 Samuel Maharero St, Academia, Windhoek</p>
+                                <p class="text-gray-400">PO Box 29061 Game, Windhoek</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-orange-500 mr-3"></i>
+                            <p class="text-gray-300">+264 85 561 6423</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-orange-500 mr-3"></i>
+                            <p class="text-gray-300">+264 81 561 6423</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-orange-500 mr-3"></i>
+                            <p class="text-gray-300">opulencem.na@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; <span id="current-year"></span> Opulence Media. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/264855616423" target="_blank" class="floating-whatsapp">
+        <i class="fab fa-whatsapp text-white text-2xl"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Enhanced animated counters with scroll trigger
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-count'));
+            const duration = 2000; // Animation duration in milliseconds
+            const step = target / (duration / 16); // Calculate step for 60fps
+            
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // Enhanced scroll animation for counters
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.3
+        };
+
+        let countersAnimated = false;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !countersAnimated) {
+                    const counters = document.querySelectorAll('.stats-counter');
+                    counters.forEach(counter => {
+                        animateCounter(counter);
+                    });
+                    countersAnimated = true;
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.counter-container');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+                header.classList.add('bg-white/95');
+                header.classList.add('backdrop-blur-sm');
+            } else {
+                header.classList.remove('shadow-lg');
+                header.classList.remove('bg-white/95');
+                header.classList.remove('backdrop-blur-sm');
+            }
+        });
+
+        // Scroll animation for elements
+        const fadeElements = document.querySelectorAll('.fade-in, .stagger-animation');
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            fadeObserver.observe(element);
+        });
+
+        // Add loading animation to elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate elements on load
+            const animatedElements = document.querySelectorAll('.feature-box, .service-card, .testimonial-card');
+            animatedElements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
